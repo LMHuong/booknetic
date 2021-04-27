@@ -1,4 +1,4 @@
-import React, { Fragment } from 'react';
+import React from 'react';
 import { Link, withRouter } from 'react-router-dom';
 import { signout, isAuthenticated } from '../auth';
 
@@ -12,7 +12,7 @@ const Menu = ({ history }) => (
         <ul className="nav nav-tabs bg-primary">
             <li className="nav-item">
                 <Link className="nav-link" style={isActive(history, '/')} to="/">
-                    Home
+                    Homepage
                 </Link>
             </li>
 
@@ -27,7 +27,7 @@ const Menu = ({ history }) => (
 
             <li className="nav-item">
                 <Link to={`/post/create`} style={isActive(history, `/post/create`)} className="nav-link">
-                    Create Post
+                    Write New Post
                 </Link>
             </li>
 
@@ -35,12 +35,12 @@ const Menu = ({ history }) => (
                 <React.Fragment>
                     <li className="nav-item">
                         <Link className="nav-link" style={isActive(history, '/signin')} to="/signin">
-                            Sign In
+                            Log In
                         </Link>
                     </li>
                     <li className="nav-item">
                         <Link className="nav-link" style={isActive(history, '/signup')} to="/signup">
-                            Sign Up
+                            Register
                         </Link>
                     </li>
                 </React.Fragment>
@@ -58,7 +58,7 @@ const Menu = ({ history }) => (
                 <React.Fragment>
                     <li className="nav-item">
                         <Link to={`/findpeople`} style={isActive(history, `/findpeople`)} className="nav-link">
-                            Find People
+                            Explore New Users
                         </Link>
                     </li>
 
@@ -78,7 +78,7 @@ const Menu = ({ history }) => (
                             style={{ cursor: 'pointer', color: '#fff' }}
                             onClick={() => signout(() => history.push('/'))}
                         >
-                            Sign Out
+                            Log Out
                         </span>
                     </li>
                 </React.Fragment>

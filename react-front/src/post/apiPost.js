@@ -23,7 +23,7 @@ export const create = (userId, token, post) => {
 //         .catch(err => console.log(err));
 // };
 
-// with pagination
+// with page number
 export const list = page => {
     return fetch(`${process.env.REACT_APP_API_URL}/posts/?page=${page}`, {
         method: "GET"

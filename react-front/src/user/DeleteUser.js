@@ -17,7 +17,7 @@ class DeleteUser extends Component {
                 console.log(data.error);
             } else {
                 // signout user
-                signout(() => console.log("User is deleted"));
+                signout(() => console.log("User deleted"));
                 // redirect
                 this.setState({ redirect: true });
             }
@@ -26,7 +26,7 @@ class DeleteUser extends Component {
 
     deleteConfirmed = () => {
         let answer = window.confirm(
-            "Are you sure you want to delete your account?"
+            "Do you want to delete this account?"
         );
         if (answer) {
             this.deleteAccount();

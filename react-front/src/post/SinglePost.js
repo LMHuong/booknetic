@@ -76,7 +76,7 @@ class SinglePost extends Component {
     };
 
     deleteConfirmed = () => {
-        let answer = window.confirm('Are you sure you want to delete your post?');
+        let answer = window.confirm('Do you want to delete this post?');
         if (answer) {
             this.deletePost();
         }
@@ -84,7 +84,7 @@ class SinglePost extends Component {
 
     renderPost = post => {
         const posterId = post.postedBy ? `/user/${post.postedBy._id}` : '';
-        const posterName = post.postedBy ? post.postedBy.name : ' Unknown';
+        const posterName = post.postedBy ? post.postedBy.name : 'Anonymous';
 
         const { like, likes } = this.state;
 

@@ -74,7 +74,7 @@ class NewPost extends Component {
     newPostForm = (title, body) => (
         <form>
             <div className="form-group">
-                <label className="text-muted">Post Photo</label>
+                <label className="text-muted">Photo</label>
                 <input
                     onChange={this.handleChange("photo")}
                     type="file"
@@ -93,7 +93,7 @@ class NewPost extends Component {
             </div>
 
             <div className="form-group">
-                <label className="text-muted">Body</label>
+                <label className="text-muted">Content</label>
                 <textarea
                     onChange={this.handleChange("body")}
                     type="text"
@@ -128,7 +128,7 @@ class NewPost extends Component {
 
         return (
             <div className="container">
-                <h2 className="mt-5 mb-5">Create a new post</h2>
+                <h2 className="mt-5 mb-5">Share Your Thoughts</h2>
                 <div
                     className="alert alert-danger"
                     style={{ display: error ? "" : "none" }}

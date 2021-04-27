@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import { comment, uncomment } from "./apiPost";
 import { isAuthenticated } from "../auth";
 import { Link } from "react-router-dom";
-import DefaultProfile from "../images/avatar.jpg";
+import DefaultProfile from "../images/avatar.png";
 
 class Comment extends Component {
     state = {
@@ -20,7 +20,7 @@ class Comment extends Component {
         if (!text.length > 0 || text.length > 150) {
             this.setState({
                 error:
-                    "Comment should not be empty and less than 150 characters long"
+                    "Comment can not be empty."
             });
             return false;
         }
@@ -31,7 +31,7 @@ class Comment extends Component {
         e.preventDefault();
 
         if (!isAuthenticated()) {
-            this.setState({ error: "Please signin to leave a comment" });
+            this.setState({ error: "Please login to leave a comment" });
             return false;
         }
 
@@ -70,7 +70,7 @@ class Comment extends Component {
 
     deleteConfirmed = comment => {
         let answer = window.confirm(
-            "Are you sure you want to delete your comment?"
+            "Do you want to delete this comment?"
         );
         if (answer) {
             this.deleteComment(comment);
@@ -92,7 +92,7 @@ class Comment extends Component {
                             onChange={this.handleChange}
                             value={this.state.text}
                             className="form-control"
-                            placeholder="Leave a comment..."
+                            placeholder="Write a comment..."
                         />
                         <button className="btn btn-raised btn-success mt-2">
                             Post

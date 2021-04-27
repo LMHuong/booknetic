@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import { findPeople, follow } from "./apiUser";
-import DefaultProfile from "../images/avatar.jpg";
+import DefaultProfile from "../images/avatar.png";
 import { Link } from "react-router-dom";
 import { isAuthenticated } from "../auth";
 
@@ -85,7 +85,7 @@ class FindPeople extends Component {
         const { users, open, followMessage } = this.state;
         return (
             <div className="container">
-                <h2 className="mt-5 mb-5">Find People</h2>
+                <h2 className="mt-5 mb-5">Explore New Users</h2>
 
                 {open && (
                     <div className="alert alert-success">{followMessage}</div>

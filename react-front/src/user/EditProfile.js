@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import { isAuthenticated } from "../auth";
 import { read, update, updateUser } from "./apiUser";
 import { Redirect } from "react-router-dom";
-import DefaultProfile from "../images/avatar.jpg";
+import DefaultProfile from "../images/avatar.png";
 
 class EditProfile extends Component {
   constructor() {
@@ -53,20 +53,20 @@ class EditProfile extends Component {
       return false;
     }
     if (name.length === 0) {
-      this.setState({ error: "Name is required", loading: false });
+      this.setState({ error: "Username cannot be empty", loading: false });
       return false;
     }
     // email@domain.com
     if (!/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/.test(email)) {
       this.setState({
-        error: "A valid Email is required",
+        error: "Email must be in valid form: email@mail.com",
         loading: false
       });
       return false;
     }
     if (password.length >= 1 && password.length <= 5) {
       this.setState({
-        error: "Password must be at least 6 characters long",
+        error: "Password must have at least 6 characters",
         loading: false
       });
       return false;

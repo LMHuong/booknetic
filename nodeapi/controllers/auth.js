@@ -14,7 +14,7 @@ exports.signup = async (req, res) => {
         });
     const user = await new User(req.body);
     await user.save();
-    res.status(200).json({ message: 'Signup success! Please login.' });
+    res.status(200).json({ message: 'Account created! Login to Booknetic now!' });
 };
 
 exports.signin = (req, res) => {
@@ -140,7 +140,6 @@ const client = new OAuth2Client(process.env.REACT_APP_GOOGLE_CLIENT_ID);
 exports.socialLogin = async (req, res) => {
     const idToken = req.body.tokenId;
     const ticket = await client.verifyIdToken({ idToken, audience: process.env.REACT_APP_GOOGLE_CLIENT_ID });
-    // console.log('ticket', ticket);
     const { email_verified, email, name, picture, sub: googleid } = ticket.getPayload();
 
     if (email_verified) {
@@ -154,7 +153,7 @@ exports.socialLogin = async (req, res) => {
                 user = new User(newUser);
                 req.profile = user;
                 user.save();
-                // generate a token with user id and secret
+                // create a token with user id and secret
                 const token = jwt.sign({ _id: user._id, iss: process.env.APP_NAME }, process.env.JWT_SECRET);
                 res.cookie('t', token, { expire: new Date() + 9999 });
                 // return response with user and token to frontend client

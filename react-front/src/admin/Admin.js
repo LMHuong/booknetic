@@ -24,17 +24,17 @@ class Admin extends Component {
             <div>
                 <div className="jumbotron">
                     <h2>Admin Dashboard</h2>
-                    <p className="lead">Welcome to React Frontend</p>
+                    <p className="lead">Welcome to Booknetic - a social media platform for book readers!</p>
                 </div>
                 <div className="container-fluid">
                     <div className="row">
                         <div className="col-md-6">
-                            <h2>Posts</h2>
+                            <h2>All Posts</h2>
                             <hr />
                             <Posts />
                         </div>
                         <div className="col-md-6">
-                            <h2>Users</h2>
+                            <h2>All Users</h2>
                             <hr />
                             <Users />
                         </div>
