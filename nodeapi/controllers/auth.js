@@ -10,7 +10,7 @@ exports.signup = async (req, res) => {
     const userExists = await User.findOne({ email: req.body.email });
     if (userExists)
         return res.status(403).json({
-            error: 'Email is taken!'
+            error: 'User already exist!'
         });
     const user = await new User(req.body);
     await user.save();
@@ -24,10 +24,10 @@ exports.signin = (req, res) => {
         // if err or no user
         if (err || !user) {
             return res.status(401).json({
-                error: 'User with that email does not exist. Please signup.'
+                error: 'User have not register for an account.'
             });
         }
-        // if user is found make sure the email and password match
+        // if user exist -> email == password 
         // create authenticate method in model and use here
         if (!user.authenticate(password)) {
             return res.status(401).json({
@@ -46,10 +46,11 @@ exports.signin = (req, res) => {
 
 exports.signout = (req, res) => {
     res.clearCookie('t');
-    return res.json({ message: 'Signout success!' });
+    return res.json({ message: 'User have log out.' });
 };
 
 exports.requireSignin = expressJwt({
+    //append userid in the auth key to the request object
     secret: process.env.JWT_SECRET,
     userProperty: 'auth'
 });
@@ -66,7 +67,7 @@ exports.forgotPassword = (req, res) => {
         // if err or no user
         if (err || !user)
             return res.status('401').json({
-                error: 'User with that email does not exist!'
+                error: 'User have not register for an account.'
             });
 
         // generate a token with user id and secret

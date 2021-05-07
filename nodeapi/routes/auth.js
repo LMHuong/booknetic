@@ -18,7 +18,7 @@ router.put('/reset-password', passwordResetValidator, resetPassword);
 // then use this route for social login
 router.post('/social-login', socialLogin);
 
-// any route containing :userId, our app will first execute userByID()
+// execute userById method when a URL have :userId param  
 router.param('userId', userById);
 
 module.exports = router;

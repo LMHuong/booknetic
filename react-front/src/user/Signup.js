@@ -54,14 +54,14 @@ class Signup extends Component {
     };
 
     clickSubmit = event => {
-        event.preventDefault();
+        event.preventDefault(); //prevent default browser behaviour: reload page when button click
         const { name, email, password } = this.state;
         const user = {
             name,
             email,
             password
         };
-        console.log(user);
+        //console.log(user);
         if (this.state.recaptcha) {
             signup(user).then(data => {
                 if (data.error) this.setState({ error: data.error });
@@ -76,7 +76,7 @@ class Signup extends Component {
             });
         } else {
             this.setState({
-                error: "What day is today? Please write a correct answer!"
+                error: "What day of the week is today? Enter the correct answer!"
             });
         }
     };
@@ -113,7 +113,7 @@ class Signup extends Component {
 
             <div className="form-group">
                 <label className="text-muted">
-                    {recaptcha ? "Thanks. You got it!" : "What day is today?"}
+                    {recaptcha ? "Correct CAPTCHA" : "What day of the week is today?"}
                 </label>
 
                 <input
@@ -136,7 +136,7 @@ class Signup extends Component {
         const { name, email, password, error, open, recaptcha } = this.state;
         return (
             <div className="container">
-                <h2 className="mt-5 mb-5">Signup</h2>
+                <h2 className="mt-5 mb-5">Register</h2>
 
                 <hr />
                 <SocialLogin />
@@ -155,8 +155,8 @@ class Signup extends Component {
                     className="alert alert-info"
                     style={{ display: open ? "" : "none" }}
                 >
-                    New account is successfully created. Please{" "}
-                    <Link to="/signin">Sign In</Link>.
+                    User account created successfully! Please{" "}
+                    <Link to="/signin">log in</Link>.
                 </div>
 
                 {this.signupForm(name, email, password, recaptcha)}

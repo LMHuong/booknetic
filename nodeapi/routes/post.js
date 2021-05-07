@@ -41,9 +41,9 @@ router.delete('/post/:postId', requireSignin, isPoster, deletePost);
 // photo
 router.get('/post/photo/:postId', photo);
 
-// any route containing :userId, our app will first execute userById()
+// execute userById method when a URL have :userId param  
 router.param('userId', userById);
-// any route containing :postId, our app will first execute postById()
+// execute postById method when a URL have :postId param  
 router.param('postId', postById);
 
 module.exports = router;

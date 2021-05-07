@@ -76,7 +76,7 @@ class Signin extends Component {
         } else {
             this.setState({
                 loading: false,
-                error: "What day is today? Please write a correct answer!"
+                error: "What day of the week is today? Enter the correct answer!"
             });
         }
     };
@@ -104,7 +104,7 @@ class Signin extends Component {
 
             <div className="form-group">
                 <label className="text-muted">
-                    {recaptcha ? "Thanks. You got it!" : "What day is today?"}
+                    {recaptcha ? "Correct CAPTCHA" : "What day of the week is today?"}
                 </label>
 
                 <input
@@ -139,11 +139,11 @@ class Signin extends Component {
 
         return (
             <div className="container">
-                <h2 className="mt-5 mb-5">SignIn</h2>
-                <hr />
+                <h2 className="mt-5 mb-5">Log In</h2>
+                {/* <hr />
                 <SocialLogin />
 
-                <hr />
+                <hr /> */}
                 <br />
 
                 <div
@@ -169,7 +169,7 @@ class Signin extends Component {
                         className="btn btn-raised btn-danger"
                     >
                         {" "}
-                        Forgot Password
+                        Forgot Your Password?
                     </Link>
                 </p>
             </div>

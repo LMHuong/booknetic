@@ -11,25 +11,25 @@ exports.userById = (req, res, next, id) => {
         .exec((err, user) => {
             if (err || !user) {
                 return res.status(400).json({
-                    error: 'User not found'
+                    error: 'User does not exist.'
                 });
             }
-            req.profile = user; // adds profile object in req with user info
+            req.profile = user; // append user info to req.profile
             next();
         });
 };
 
 exports.hasAuthorization = (req, res, next) => {
-    let sameUser = req.profile && req.auth && req.profile._id == req.auth._id;
-    let adminUser = req.profile && req.auth && req.auth.role === 'admin';
+    let sameUser = req.profile && req.auth && req.profile._id == req.auth._id; //make sure user is performing action on their own account
+    let adminUser = req.profile && req.auth && req.auth.role === 'admin'; //admin users
 
     const authorized = sameUser || adminUser;
 
     if (!authorized) {
         return res.status(403).json({
-            error: 'User is not authorized to perform this action'
+            error: 'Unauthorised access to this action!'
         });
-    }
+    } 
     next();
 };
 

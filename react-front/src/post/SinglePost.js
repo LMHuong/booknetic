@@ -10,15 +10,16 @@ class SinglePost extends Component {
         post: '',
         redirectToHome: false,
         redirectToSignin: false,
-        like: false,
-        likes: 0,
+        like: false, //keep track whether or not user have liked the post
+        likes: 0, //number of likes on post
         comments: []
     };
 
+    //check if the current logged in user's id is already in the post's like array
     checkLike = likes => {
         const userId = isAuthenticated() && isAuthenticated().user._id;
-        let match = likes.indexOf(userId) !== -1;
-        return match;
+        let match = likes.indexOf(userId) !== -1; //indexOf method find userId in likes array; if userId don't exist -> return -1 value
+        return match; 
     };
 
     componentDidMount = () => {
@@ -44,7 +45,7 @@ class SinglePost extends Component {
     likeToggle = () => {
         if (!isAuthenticated()) {
             this.setState({ redirectToSignin: true });
-            return false;
+            return false; // don't execute rest of the code
         }
         let callApi = this.state.like ? unlike : like;
         const userId = isAuthenticated().user._id;
@@ -56,8 +57,8 @@ class SinglePost extends Component {
                 console.log(data.error);
             } else {
                 this.setState({
-                    like: !this.state.like,
-                    likes: data.likes.length
+                    like: !this.state.like, //change like state -> like: true -> unlike: false
+                    likes: data.likes.length //update number of likes
                 });
             }
         });
@@ -96,9 +97,11 @@ class SinglePost extends Component {
                     onError={i => (i.target.src = `${DefaultPost}`)}
                     className="img-thunbnail mb-3"
                     style={{
-                        height: '300px',
+                        height: '400px',
                         width: '100%',
-                        objectFit: 'cover'
+                        objectFit: 'cover',
+                        objectPosition: "center"
+
                     }}
                 />
 

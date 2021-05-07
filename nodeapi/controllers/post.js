@@ -20,21 +20,6 @@ exports.postById = (req, res, next, id) => {
         });
 };
 
-/*
-exports.getPosts = (req, res) => {
-    const posts = Post.find()
-        .populate("postedBy", "_id name")
-        .populate("comments", "text created")
-        .populate("comments.postedBy", "_id name")
-        .select("_id title body created likes")
-        .sort({ created: -1 })
-        .then(posts => {
-            res.json(posts);
-        })
-        .catch(err => console.log(err));
-};
-*/
-
 exports.getPosts = async (req, res) => {
     // get current page from req.query or use default value of 1
     const currentPage = req.query.page || 1;
@@ -63,8 +48,8 @@ exports.getPosts = async (req, res) => {
 };
 
 exports.createPost = (req, res, next) => {
-    let form = new formidable.IncomingForm();
-    form.keepExtensions = true;
+    let form = new formidable.IncomingForm(); //incoming form fields
+    form.keepExtensions = true; // keep file extension (.jpeg, .png)
     form.parse(req, (err, fields, files) => {
         if (err) {
             return res.status(400).json({
@@ -75,9 +60,9 @@ exports.createPost = (req, res, next) => {
 
         req.profile.hashed_password = undefined;
         req.profile.salt = undefined;
-        post.postedBy = req.profile;
+        post.postedBy = req.profile; //assign user to post
 
-        if (files.photo) {
+        if (files.photo) { 
             post.photo.data = fs.readFileSync(files.photo.path);
             post.photo.contentType = files.photo.type;
         }

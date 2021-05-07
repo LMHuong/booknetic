@@ -106,6 +106,7 @@ class Profile extends Component {
               <p>{user.name}</p>
               <p>Email: {user.email}</p>
               <p>{`Joined ${new Date(user.created).toDateString()}`}</p>
+              <p>{`Profile last updated at: ${new Date(user.updated).toDateString()}`}</p>
             </div>
 
             {isAuthenticated().user &&
